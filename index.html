@@ -5,7 +5,8 @@
   <script>
     function GetCookie(name) 
     {
-      let pairs = document.cookie.split(";");
+      var str = name+"=";
+      let pairs = document.cookie.split(":");
       for (let i = 0; i < pairs.length; i++) 
       {
         let pair = pairs[i].trim();
