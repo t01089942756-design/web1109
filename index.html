@@ -5,7 +5,7 @@
   <script>
     function GetCookie(name) 
     {
-      let pairs = document.cookie.split(":");
+      let pairs = document.cookie.split(";");
       for (let i = 0; i < pairs.length; i++) 
       {
         let pair = pairs[i].trim();
@@ -20,17 +20,16 @@
     function SetCookie(name, value, expireDate) 
     {
       let cookieStr = name + "=" + escape(value);
-      if (expireDate == null)
-         exprireDate="";
-      else
-        exprireDate = ";expires=" + expireDate.toUTCString();
-      document.cookie = cookieStr;
+      if (expireDate != null){
+        cookieStr += "; expires=" + expireDate.toUTCString();
+        }
+        document.cookie = cookieStr;
     }
   </script>
   <body>
     <script>
       let username = GetCookie("username");
-      let count = GetCookie("count");
+      let count = GetCookie(GetCookie("count")) || 0;
       let expires = new Date(); //현재 시각
       if(username == null) //아무것도 없다는 뜻
       {
