@@ -21,8 +21,8 @@
     function SetCookie(name, value, expireDate) 
     {
       var cookieSrt = name + "=" + escape(value) +
-      ((expireDate == null)?"":)("; expires=" + expireDate.toUTCString());
-      document.cookie = cookieSrt;
+      ((expireDate == null)?"":)("; expires=" + expireDate.toGMTString());
+      document.cookie = cookieStr;
     }
   </script>
   <body>
@@ -41,15 +41,15 @@
         }
         else
         {
-          expires.setTime(expires.getTime() + 365*24*3600*1000); //유효기간을 오늘로부터 1년뒤로 설정하라
-          SetCookie("username", username, expires);
+          expire.setTime(expire.getTime() + 365*24*3600*1000); //유효기간을 오늘로부터 1년뒤로 설정하라
+          SetCookie("username", username, expire);
         }
       }
       //이미 등록된 사용자라면
       count=count + 1; //count++
-      expires.setTime(expires.getTime() + 365*24*3600*1000);
+      expire.setTime(expire.getTime() + 365*24*3600*1000);
       SetCookie("count", count, expires);
-      document.write("<br>" +username +"님");
+      document.write("<br>" +username+"님");
       document.write(count + "번째 방문을 환영합니다!");
     </script>
   </body>
