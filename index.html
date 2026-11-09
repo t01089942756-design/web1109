@@ -49,7 +49,7 @@
       }
       //이미 등록된 사용자라면
       count=count + 1; //count++
-      expire.setTime(expires.getTime() + 365*24*3600*1000);
+      expires.setTime(expires.getTime() + 365*24*3600*1000);
       SetCookie("count", count, expires);
       document.write("<br>" +username +"님");
       document.write(count + "번째 방문을 환영합니다!");
